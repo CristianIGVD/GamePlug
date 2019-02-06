@@ -23,20 +23,34 @@ public class Hook : MonoBehaviour
     {
         if (Input.GetButtonDown ("Fire1"))
         {
-            if (Physics.Raycast (cam.position, cam.forward, out hit))
+            if (Physics.Raycast(cam.position, cam.forward, out hit))
             {
                 attached = true;
                 rb.isKinematic = true;
-              
             }
-            
+           /* else
+                attached = false;
+                rb.isKinematic = false;*/
+        }
+
+        if (Input.GetButtonUp("Fire1"))
+        {
+            attached = false;
+            rb.isKinematic = false;
+            rb.velocity = cam.forward * momentum;
         }
         if (attached)
-            {
+        {
             momentum += Time.deltaTime * speed;
             step = momentum * Time.deltaTime;
             transform.position = Vector3.MoveTowards(transform.position, hit.point, step);
-            }
+        }
+        if (!attached)
+        {
+            momentum -= Time.deltaTime * 5;
+        }
+    }   
         
-    }
+        
+    
 }
