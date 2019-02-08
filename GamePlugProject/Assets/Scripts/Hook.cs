@@ -45,10 +45,16 @@ public class Hook : MonoBehaviour
             step = momentum * Time.deltaTime;
             transform.position = Vector3.MoveTowards(transform.position, hit.point, step);
         }
+<<<<<<< HEAD
         if (!attached && momentum >= 10)
         {
             momentum -= Time.deltaTime * 5;
             step = 0;
+=======
+        if (!attached)
+        {
+            momentum -= Time.deltaTime * 5;
+>>>>>>> ProjectReintegration
         }
     }   
         
