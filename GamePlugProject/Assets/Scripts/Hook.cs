@@ -11,7 +11,7 @@ public class Hook : MonoBehaviour
     public float momentum;
     public float speed;
     public float step;
-    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,16 +21,16 @@ public class Hook : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown ("Fire1"))
+        if (Input.GetButtonDown("Fire1"))
         {
             if (Physics.Raycast(cam.position, cam.forward, out hit))
             {
                 attached = true;
                 rb.isKinematic = true;
             }
-           /* else
-                attached = false;
-                rb.isKinematic = false;*/
+            /* else
+                 attached = false;
+                 rb.isKinematic = false;*/
         }
 
         if (Input.GetButtonUp("Fire1"))
@@ -45,19 +45,20 @@ public class Hook : MonoBehaviour
             step = momentum * Time.deltaTime;
             transform.position = Vector3.MoveTowards(transform.position, hit.point, step);
         }
-<<<<<<< HEAD
+
         if (!attached && momentum >= 10)
         {
             momentum -= Time.deltaTime * 5;
             step = 0;
-=======
-        if (!attached)
-        {
-            momentum -= Time.deltaTime * 5;
->>>>>>> ProjectReintegration
+
+            if (!attached)
+            {
+                momentum -= Time.deltaTime * 5;
+
+            }
         }
-    }   
-        
-        
-    
+
+
+
+    }
 }
