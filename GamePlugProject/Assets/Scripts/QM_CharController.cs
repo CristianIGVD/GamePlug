@@ -19,18 +19,19 @@
      private float vertSpeed = 0; // vertical jump current speed
  
      private Transform myTransform;
-     public BoxCollider boxCollider; // drag BoxCollider ref in editor
+     //public BoxCollider boxCollider; // drag BoxCollider ref in editor
      public Rigidbody rigidbody;
- 
+     public CapsuleCollider capsule;
      private void Start(){
          myNormal = transform.up; // normal starts as character up direction
          myTransform = transform;
          GetComponent<Rigidbody>().freezeRotation = true; // disable physics rotation
-         
+
         // distance from transform.position to ground
-         distGround = boxCollider.size.y - boxCollider.center.y;
- 
-     }
+        distGround = capsule.height - capsule.center.y;
+        //distGround = boxCollider.size.y - boxCollider.center.y;
+
+    }
  
      private void FixedUpdate(){
         // apply constant weight force according to character normal:
